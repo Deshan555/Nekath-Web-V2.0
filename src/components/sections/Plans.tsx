@@ -2,6 +2,7 @@ import { Button, Divider } from 'antd';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 export const Plans = () => {
   const plans = [
@@ -116,13 +117,15 @@ export const Plans = () => {
               ))}
             </ul>
 
-            <Button 
-              type={p.featured ? 'primary' : 'default'}
-              block
-              className={`font-cinzel h-auto py-3.5 text-[0.65rem] tracking-[0.25em] uppercase rounded-none border-[var(--gold)]/30 bg-transparent text-[var(--gold)] hover:!bg-[var(--gold)]/10 hover:!border-[var(--gold)] ${p.featured ? '!bg-gradient-to-br !from-[var(--gold-light)] !to-[var(--gold)] !text-[var(--midnight)] !border-none hover:!filter hover:!brightness-110' : ''}`}
-            >
-              Get {p.name}
-            </Button>
+            <Link to="/register" className="block mt-7 font-cinzel text-[0.65rem] tracking-[0.25em] transition-all duration-300">
+              <Button 
+                type={p.featured ? 'primary' : 'default'}
+                block
+                className={`h-auto py-3.5 text-[0.65rem] tracking-[0.25em] uppercase rounded-none border-[var(--gold)]/30 bg-transparent text-[var(--gold)] hover:!bg-[var(--gold)]/10 hover:!border-[var(--gold)] ${p.featured ? '!bg-gradient-to-br !from-[var(--gold-light)] !to-[var(--gold)] !text-[var(--midnight)] !border-none hover:!filter hover:!brightness-110' : ''}`}
+              >
+                Choose Your Path
+              </Button>
+            </Link>
           </motion.div>
         ))}
       </div>

@@ -12,10 +12,13 @@ import '@fontsource/cinzel-decorative/700.css';
 import '@fontsource/eb-garamond/400.css';
 import '@fontsource/eb-garamond/500.css';
 import './index.css'
+import { BrowserRouter } from 'react-router-dom';
 import App from './App.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </StrictMode>,
 )

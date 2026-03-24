@@ -67,3 +67,83 @@ body {
   background-clip: text;
   color: transparent;
 }
+
+/* Ant Design Overrides */
+.ant-picker, .ant-input, .ant-select-selector {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(201, 168, 76, 0.2) !important;
+  color: var(--cream) !important;
+  border-radius: 0 !important;
+}
+
+.ant-picker:hover, .ant-input:hover, .ant-select-selector:hover {
+  border-color: rgba(201, 168, 76, 0.4) !important;
+}
+
+.ant-picker-focused, .ant-input-focused, .ant-select-focused .ant-select-selector {
+  border-color: var(--gold) !important;
+  box-shadow: 0 0 8px rgba(201, 168, 76, 0.2) !important;
+}
+
+.ant-picker-input > input::placeholder, .ant-input::placeholder {
+  color: rgba(212, 196, 160, 0.3) !important;
+}
+
+.ant-select-arrow {
+  color: var(--gold-dim) !important;
+}
+
+.ant-select-dropdown {
+  background-color: var(--midnight) !important;
+  border: 1px solid rgba(201, 168, 76, 0.2) !important;
+  border-radius: 0 !important;
+  padding: 4px !important;
+}
+
+.ant-select-item {
+  color: var(--cream-dim) !important;
+  border-radius: 0 !important;
+}
+
+.ant-select-item-option-selected {
+  background-color: rgba(201, 168, 76, 0.15) !important;
+  color: var(--gold) !important;
+}
+
+.ant-select-item-option-active {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  color: var(--gold-light) !important;
+}
+
+/* Steps Overrides */
+.custom-steps .ant-steps-item-title {
+  color: var(--gold-dim) !important;
+  font-family: 'Cinzel', serif !important;
+}
+
+.custom-steps .ant-steps-item-finish .ant-steps-item-icon {
+  border-color: var(--gold) !important;
+  background-color: var(--gold) !important;
+}
+
+.custom-steps .ant-steps-item-finish .ant-steps-item-icon .ant-steps-icon {
+  color: var(--midnight) !important;
+}
+
+.custom-steps .ant-steps-item-process .ant-steps-item-icon {
+  background-color: var(--gold) !important;
+  border-color: var(--gold) !important;
+}
+
+.custom-steps .ant-steps-item-wait .ant-steps-item-icon {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(201, 168, 76, 0.3) !important;
+}
+
+.custom-steps .ant-steps-item-wait .ant-steps-item-icon .ant-steps-icon {
+  color: var(--gold-dim) !important;
+}
+
+.custom-steps .ant-steps-item-tail::after {
+  background-color: rgba(201, 168, 76, 0.2) !important;
+}

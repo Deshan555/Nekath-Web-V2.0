@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 export const Hero = () => (
   <section className="min-h-screen flex flex-col items-center justify-center text-center px-10 pt-[120px] pb-20 relative">
@@ -69,10 +70,10 @@ export const Hero = () => (
       transition={{ delay: 1.1, duration: 1 }}
       className="flex gap-5 flex-wrap justify-center"
     >
-      <a href="#" className="font-cinzel text-[0.72rem] tracking-[0.28em] uppercase text-[var(--midnight)] bg-gradient-to-br from-[var(--gold-light)] to-[var(--gold)] px-10 py-4 no-underline transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(201,168,76,0.4)] relative overflow-hidden group">
-        <span className="relative z-10">Reveal My Chart</span>
+      <Link to="/register" className="font-cinzel text-[0.72rem] tracking-[0.28em] uppercase text-[var(--midnight)] bg-gradient-to-br from-[var(--gold-light)] to-[var(--gold)] px-10 py-4 no-underline transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(201,168,76,0.4)] relative overflow-hidden group">
+        <span className="relative z-10">Begin Your Journey</span>
         <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500" />
-      </a>
+      </Link>
       <a href="#features" className="font-cinzel text-[0.72rem] tracking-[0.28em] uppercase text-[var(--gold)] bg-transparent border border-[var(--gold)]/40 px-10 py-4 no-underline transition-all duration-300 hover:border-[var(--gold)] hover:bg-[var(--gold)]/5">
         Explore Features
       </a>
