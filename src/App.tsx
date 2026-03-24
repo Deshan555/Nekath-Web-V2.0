@@ -9,6 +9,7 @@ import { HowItWorks } from './components/sections/HowItWorks';
 import { Plans } from './components/sections/Plans';
 import { Footer } from './components/sections/Footer';
 import { Register } from './pages/Register';
+import { ScrollHaptics } from './components/ScrollHaptics';
 import { Login } from './pages/Login';
 import { Dashboard } from './pages/Dashboard';
 import { MatchingPage } from './pages/MatchingPage';
@@ -35,11 +36,13 @@ function App() {
             
             <div className="relative z-10">
               <Nav />
-              <Hero />
-              <Features />
-              <HowItWorks />
-              <Plans />
-              <Footer />
+              <ScrollHaptics>
+                <section><Hero /></section>
+                <section><Features /></section>
+                <section><HowItWorks /></section>
+                <section><Plans /></section>
+                <Footer />
+              </ScrollHaptics>
             </div>
           </div>
         } />

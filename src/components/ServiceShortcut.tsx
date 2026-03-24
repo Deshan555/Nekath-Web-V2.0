@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import type { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
+import { haptics } from '../utils/haptics';
 
 interface ServiceShortcutProps {
   title: string;
@@ -19,7 +20,10 @@ export const ServiceShortcut = ({ title, description, icon, path, color = "var(-
     <Card 
       hoverable 
       className="bg-[var(--panel-bg)] backdrop-blur-xl border border-[var(--panel-border)] p-4 shadow-xl transition-all hover:border-[var(--gold)]/40 group overflow-hidden relative"
-      onClick={() => navigate(path)}
+      onClick={() => {
+        haptics.light();
+        navigate(path);
+      }}
     >
       <div className="absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-10 transition-opacity">
         <FontAwesomeIcon icon={icon} className="text-6xl" style={{ color }} />

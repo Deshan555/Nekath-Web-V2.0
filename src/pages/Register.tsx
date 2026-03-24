@@ -6,6 +6,7 @@ import { faStar, faChevronRight, faChevronLeft, faCircleCheck } from '@fortaweso
 import { useNavigate, Link } from 'react-router-dom';
 import { Cosmos } from '../components/Cosmos';
 import { Yantra } from '../components/Yantra';
+import { haptics } from '../utils/haptics';
 
 const plans = [
   {
@@ -53,15 +54,21 @@ export const Register = () => {
         ['tier']
       ];
       await form.validateFields(stepFields[currentStep]);
+      haptics.medium();
       setCurrentStep(currentStep + 1);
     } catch (error) {
+      haptics.error();
       console.log('Validation failed:', error);
     }
   };
 
-  const prev = () => setCurrentStep(currentStep - 1);
+  const prev = () => {
+    haptics.light();
+    setCurrentStep(currentStep - 1);
+  };
 
   const onFinish = (values: any) => {
+    haptics.success();
     localStorage.setItem('nakath_user_name', values.name || 'Seeker');
     localStorage.setItem('nakath_user_dob', values.dob ? values.dob.format('DD MMM YYYY') : 'Not Set');
     localStorage.setItem('nakath_user_tob', values.tob ? values.tob.format('hh:mm A') : 'Not Set');

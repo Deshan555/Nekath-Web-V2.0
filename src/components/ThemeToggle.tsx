@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
+import { haptics } from '../utils/haptics';
 
 export const ThemeToggle = () => {
   const [isLight, setIsLight] = useState(localStorage.getItem('theme') === 'light');
@@ -17,7 +18,10 @@ export const ThemeToggle = () => {
 
   return (
     <button
-      onClick={() => setIsLight(!isLight)}
+      onClick={() => {
+        setIsLight(!isLight);
+        haptics.medium();
+      }}
       className="p-2 w-10 h-10 rounded-full bg-[var(--panel-bg)] border border-[var(--panel-border)] text-[var(--gold)] hover:bg-[var(--gold)]/10 transition-all flex items-center justify-center cursor-pointer"
       title={isLight ? "Switch to Dark Mode" : "Switch to Light Mode"}
     >

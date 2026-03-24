@@ -23,7 +23,7 @@ export const HoroscopeChart: React.FC<HoroscopeChartProps> = ({
   const houseOrder = [12, 1, 2, 11, 'center', 3, 10, 'center', 4, 9, 8, 7];
 
   return (
-    <div className="aspect-square w-full max-w-[400px] mx-auto border border-[var(--gold)]/30 bg-[var(--midnight)] relative p-2 shadow-[0_0_40px_rgba(201,168,76,0.1)]">
+    <div className="aspect-square w-full max-w-[400px] mx-auto border border-[var(--gold)]/30 bg-[var(--panel-bg)] backdrop-blur-md relative p-2 shadow-[0_0_40px_rgba(201,168,76,0.1)] transition-all duration-500">
       {/* Corner Accents */}
       <div className="absolute -top-1 -left-1 w-4 h-4 border-t-2 border-l-2 border-[var(--gold)]" />
       <div className="absolute -top-1 -right-1 w-4 h-4 border-t-2 border-r-2 border-[var(--gold)]" />
@@ -45,7 +45,7 @@ export const HoroscopeChart: React.FC<HoroscopeChartProps> = ({
               key={hNum} 
               className={`border border-[var(--gold)]/10 flex flex-col items-center justify-center p-1 relative transition-all hover:bg-[var(--gold)]/5 ${isLagna ? 'bg-[var(--gold)]/10 border-[var(--gold)]/40 shadow-inner' : ''}`}
             >
-              <span className={`absolute top-1 left-1.5 text-[0.45rem] font-cinzel opacity-40 ${isLagna ? 'text-[var(--gold)] opacity-100 font-bold' : 'text-[var(--cream)]'}`}>
+              <span className={`absolute top-1 left-1.5 text-[0.45rem] font-cinzel opacity-40 ${isLagna ? 'text-[var(--gold)] opacity-100 font-bold' : 'text-[var(--text-main)]'}`}>
                 {hNum}
               </span >
               <div className="flex flex-wrap justify-center gap-1 mt-1">

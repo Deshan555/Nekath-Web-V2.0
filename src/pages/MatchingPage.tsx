@@ -6,6 +6,7 @@ import { faHeartPulse, faChevronLeft, faExclamationTriangle, faVenusMars } from 
 import { useNavigate } from 'react-router-dom';
 import { Cosmos } from '../components/Cosmos';
 import { Yantra } from '../components/Yantra';
+import { haptics } from '../utils/haptics';
 
 export const MatchingPage = () => {
   const [form] = Form.useForm();
@@ -15,6 +16,7 @@ export const MatchingPage = () => {
   const onFinish = (values: any) => {
     // Mock matching logic
     console.log('Matching details:', values);
+    haptics.success();
     setResult({
       score: 28.5,
       kootas: [
