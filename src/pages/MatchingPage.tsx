@@ -35,8 +35,7 @@ export const MatchingPage = () => {
         { name: "Gana Dosha", status: "Mild", color: "text-yellow-400" }
       ]
     });
-  };
-
+  export default MatchingPage;
   return (
     <div className="relative min-h-screen bg-[var(--midnight)] text-[var(--cream)] overflow-x-hidden font-poppins pb-20">
       <Cosmos />
@@ -156,3 +155,5 @@ export const MatchingPage = () => {
     </div>
   );
 };
+
+export default MatchingPage;
