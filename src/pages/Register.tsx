@@ -98,11 +98,11 @@ export const Register = () => {
           />
         </div>
 
-        <div className="bg-[var(--midnight)]/40 backdrop-blur-xl border border-[var(--gold)]/15 p-8 md:p-12 shadow-2xl relative">
-          <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-[var(--gold)]/40" />
-          <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-[var(--gold)]/40" />
-          <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-[var(--gold)]/40" />
-          <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-[var(--gold)]/40" />
+        <div className="bg-[var(--panel-bg)] backdrop-blur-xl border border-[var(--panel-border)] p-8 md:p-12 shadow-2xl relative transition-all duration-500">
+          <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-[var(--panel-border)]" />
+          <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-[var(--panel-border)]" />
+          <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-[var(--panel-border)]" />
+          <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-[var(--panel-border)]" />
 
           <Form form={form} layout="vertical" onFinish={onFinish} requiredMark={false}>
             <AnimatePresence mode="wait">
@@ -173,9 +173,9 @@ export const Register = () => {
                       <Card
                         key={p.name}
                         onClick={() => form.setFieldsValue({ tier: p.name })}
-                        className={`cursor-pointer transition-all border-[var(--gold)]/10 bg-white/5 hover:border-[var(--gold)]/40 ${selectedTier === p.name ? 'border-[var(--gold)] !bg-[var(--gold)]/20 shadow-[0_0_20px_rgba(201,168,76,0.3)]' : ''
+                        className={`cursor-pointer transition-all border-[var(--panel-border)] bg-[var(--panel-bg)] hover:border-[var(--gold)]/40 ${selectedTier === p.name ? 'border-[var(--gold)] !bg-[var(--gold)]/20 shadow-[0_0_20px_rgba(201,168,76,0.3)]' : ''
                           }`}
-                        bodyStyle={{ padding: '16px' }}
+                        styles={{ body: { padding: '16px' } }}
                       >
                         <p className="font-cinzel text-[0.5rem] tracking-widest text-[var(--gold-dim)] uppercase mb-1">{p.tier}</p>
                         <h4 className="font-cinzel text-xs text-[var(--cream)] mb-2">{p.name}</h4>

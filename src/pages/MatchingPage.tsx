@@ -51,7 +51,7 @@ export const MatchingPage = () => {
 
         {!result ? (
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
-            <Card className="bg-[var(--midnight)]/40 backdrop-blur-xl border border-[var(--gold)]/15 p-8 shadow-2xl relative">
+            <Card className="bg-[var(--panel-bg)] backdrop-blur-xl border border-[var(--panel-border)] p-8 shadow-2xl relative transition-all duration-500">
               <Form form={form} layout="vertical" onFinish={onFinish} requiredMark={false}>
                 <h3 className="font-cinzel text-sm text-[var(--gold)] mb-8 flex items-center gap-2">
                   <FontAwesomeIcon icon={faVenusMars} />
@@ -93,7 +93,7 @@ export const MatchingPage = () => {
           </motion.div>
         ) : (
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
-            <Card className="bg-[var(--midnight)]/40 backdrop-blur-xl border border-[var(--gold)]/15 p-8 shadow-2xl relative">
+            <Card className="bg-[var(--panel-bg)] backdrop-blur-xl border border-[var(--panel-border)] p-8 shadow-2xl relative transition-all duration-500">
               <div className="absolute top-0 right-0 p-8 opacity-10">
                  <FontAwesomeIcon icon={faHeartPulse} className="text-8xl text-[var(--gold)]" />
               </div>
@@ -113,12 +113,12 @@ export const MatchingPage = () => {
                     <h3 className="font-cinzel text-xs text-[var(--gold-dim)] uppercase tracking-widest mb-6">Koota Breakdown</h3>
                     <div className="flex flex-col gap-4">
                        {result.kootas.map((k: any, i: number) => (
-                         <div key={i} className="bg-white/5 p-4 border border-white/5">
+                         <div key={i} className="bg-[var(--panel-bg)] p-4 border border-[var(--panel-border)] transition-all">
                             <div className="flex justify-between items-center mb-1">
-                               <span className="text-xs text-[var(--cream)] font-bold">{k.name}</span>
+                               <span className="text-xs text-[var(--text-main)] font-bold">{k.name}</span>
                                <span className="text-[0.65rem] text-[var(--gold)]">{k.score} / {k.max}</span>
                             </div>
-                            <p className="text-[0.6rem] text-[var(--cream-dim)] opacity-50">{k.desc}</p>
+                            <p className="text-[0.6rem] text-[var(--text-dim)] opacity-50">{k.desc}</p>
                          </div>
                        ))}
                     </div>
@@ -127,10 +127,10 @@ export const MatchingPage = () => {
                     <h3 className="font-cinzel text-xs text-[var(--gold-dim)] uppercase tracking-widest mb-6">Dosha Analysis</h3>
                     <div className="flex flex-col gap-4">
                        {result.doshas.map((d: any, i: number) => (
-                         <div key={i} className="bg-white/5 p-4 border border-white/10 flex items-center justify-between">
+                         <div key={i} className="bg-[var(--panel-bg)] p-4 border border-[var(--panel-border)] flex items-center justify-between transition-all">
                             <div className="flex items-center gap-3">
                                <FontAwesomeIcon icon={faExclamationTriangle} className={`${d.color} text-xs`} />
-                               <span className="text-xs text-[var(--cream)]">{d.name}</span>
+                               <span className="text-xs text-[var(--text-main)]">{d.name}</span>
                             </div>
                             <span className={`text-[0.6rem] font-bold uppercase ${d.color}`}>{d.status}</span>
                          </div>

@@ -37,12 +37,12 @@ export const Login = () => {
             <p className="font-poppins text-[var(--cream-dim)] text-xs opacity-60">Enter your credentials to access the cosmos.</p>
           </div>
 
-          <Card className="bg-[var(--midnight)]/40 backdrop-blur-xl border border-[var(--gold)]/15 p-4 shadow-2xl relative">
+          <Card className="bg-[var(--panel-bg)] backdrop-blur-xl border border-[var(--panel-border)] p-4 shadow-2xl relative transition-all duration-500">
              {/* Corner accents */}
-            <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-[var(--gold)]/40" />
-            <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-[var(--gold)]/40" />
-            <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-[var(--gold)]/40" />
-            <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-[var(--gold)]/40" />
+            <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-[var(--panel-border)]" />
+            <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-[var(--panel-border)]" />
+            <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-[var(--panel-border)]" />
+            <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-[var(--panel-border)]" />
 
             <Form layout="vertical" onFinish={onFinish} requiredMark={false}>
               <Form.Item label="Full Name (Optional for Demo)" name="name">

@@ -120,7 +120,7 @@ export const Dashboard = () => {
                      title="Nakath Calendar" 
                      description="Auspicious timing for 10+ activities based on your birth star."
                      icon={faCalendarAlt}
-                     path="/dashboard"
+                     path="/nakath"
                      color="var(--gold)"
                    />
                  </Col>
