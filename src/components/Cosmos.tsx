@@ -18,7 +18,8 @@ export const Cosmos: React.FC = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none bg-[#060412]">
+    <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none bg-[var(--midnight)] transition-colors duration-500">
+      <div className="absolute inset-0 opacity-100 dark-only:block light-mode:opacity-0 transition-opacity duration-500">
       {/* Nebula glows */}
       <div 
         className="absolute w-[600px] h-[600px] rounded-full blur-[80px] bg-[radial-gradient(circle,rgba(42,22,100,0.6)_0%,transparent_70%)] -top-[150px] -left-[100px] animate-[drift1_20s_ease-in-out_infinite_alternate]"
@@ -95,6 +96,7 @@ export const Cosmos: React.FC = () => {
       >
         <div className="absolute w-[16px] h-[16px] bg-[#C9A84C] rounded-full shadow-[0_0_12px_rgba(201,168,76,0.5),0_0_30px_rgba(201,168,76,0.5)] -top-[8px] left-1/2 -translate-x-1/2" />
         <div className="absolute w-[12px] h-[12px] bg-[#B8A070] rounded-full shadow-[0_0_12px_rgba(184,160,112,0.4),0_0_30px_rgba(184,160,112,0.4)] -bottom-[6px] left-1/2 -translate-x-1/2" />
+      </div>
       </div>
     </div>
   );

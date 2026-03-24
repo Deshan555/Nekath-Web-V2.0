@@ -1,12 +1,12 @@
 import { Card, Row, Col, Progress, Badge, Divider, List } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faInfinity, faCalendarAlt, faChartLine, faSignOutAlt, faBell, faCompass } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
+import { ThemeToggle } from '../components/ThemeToggle';
+import { ServiceShortcut } from '../components/ServiceShortcut';
 import { Cosmos } from '../components/Cosmos';
 import { HoroscopeChart } from '../components/HoroscopeChart';
-import { NakathService } from '../components/NakathService';
-import { MatchingService } from '../components/MatchingService';
 import { Chatbot } from '../components/Chatbot';
+import { faCalendarAlt, faHeartPulse, faStar, faInfinity, faCompass, faChartLine, faBell, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 export const Dashboard = () => {
   const navigate = useNavigate();
@@ -55,6 +55,7 @@ export const Dashboard = () => {
             <p className="text-[var(--cream-dim)] opacity-60 italic text-sm">Welcome back, {user.name}</p>
           </div>
           <div className="flex items-center gap-4">
+             <ThemeToggle />
              <Badge count={3} offset={[-2, 6]} color="var(--gold)">
                 <div className="w-10 h-10 rounded-full bg-white/5 border border-[var(--gold)]/20 flex items-center justify-center text-[var(--gold)]">
                     <FontAwesomeIcon icon={faBell} />
@@ -110,15 +111,27 @@ export const Dashboard = () => {
             <div className="mb-12">
                <h3 className="font-cinzel text-md text-[var(--gold)] tracking-widest uppercase mb-6 flex items-center gap-3">
                  <div className="h-px bg-[var(--gold)]/30 flex-1" />
-                 Cosmic Services
+                 Specialized Services
                  <div className="h-px bg-[var(--gold)]/30 flex-1" />
                </h3>
-               <Row gutter={[24, 24]}>
-                 <Col xs={24} md={12}>
-                   <NakathService />
+               <Row gutter={[20, 20]}>
+                 <Col xs={24} sm={12}>
+                   <ServiceShortcut 
+                     title="Nakath Calendar" 
+                     description="Auspicious timing for 10+ activities based on your birth star."
+                     icon={faCalendarAlt}
+                     path="/dashboard"
+                     color="var(--gold)"
+                   />
                  </Col>
-                 <Col xs={24} md={12}>
-                   <MatchingService />
+                 <Col xs={24} sm={12}>
+                   <ServiceShortcut 
+                     title="Partner Matching" 
+                     description="Discover your celestial connection with full Ashtakoota analysis."
+                     icon={faHeartPulse}
+                     path="/matching"
+                     color="var(--teal-l)"
+                   />
                  </Col>
                </Row>
             </div>

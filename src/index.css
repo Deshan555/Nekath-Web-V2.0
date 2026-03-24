@@ -6,6 +6,8 @@
 
 :root {
   --midnight:  #060412;
+  --panel-bg:  rgba(255, 255, 255, 0.05);
+  --panel-border: rgba(201, 168, 76, 0.2);
   --deep-navy: #0C0920;
   --indigo:    #14113A;
   --gold:      #C9A84C;
@@ -18,18 +20,37 @@
   --teal:      #1A6B6B;
   --teal-l:    #2A9898;
   --white:     #FFFFFF;
+  --text-main: var(--cream);
+  --text-dim:  var(--cream-dim);
 
   font-family: 'Poppins', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color: var(--cream);
+  color: var(--text-main);
   background-color: var(--midnight);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.light-mode {
+  --midnight:    #FDFBF7;
+  --panel-bg:    rgba(0, 0, 0, 0.03);
+  --panel-border: rgba(139, 111, 46, 0.15);
+  --deep-navy:   #F5F0E5;
+  --indigo:      #E8E1D3;
+  --gold:        #8B6F2E;
+  --gold-light:  #C9A84C;
+  --gold-dim:    #5D4A1F;
+  --cream:       #2D2A26;
+  --cream-dim:   #5C5850;
+  --text-main:   #2D2A26;
+  --text-dim:    #5C5850;
+  --teal:        #0E4D4D;
+  --teal-l:      #1A6B6B;
 }
 
 body {
@@ -70,9 +91,9 @@ body {
 
 /* Ant Design Overrides */
 .ant-picker, .ant-input, .ant-select-selector {
-  background-color: rgba(255, 255, 255, 0.05) !important;
-  border-color: rgba(201, 168, 76, 0.2) !important;
-  color: var(--cream) !important;
+  background-color: var(--panel-bg) !important;
+  border-color: var(--panel-border) !important;
+  color: var(--text-main) !important;
   border-radius: 0 !important;
 }
 
@@ -95,13 +116,13 @@ body {
 
 .ant-select-dropdown {
   background-color: var(--midnight) !important;
-  border: 1px solid rgba(201, 168, 76, 0.2) !important;
+  border: 1px solid var(--panel-border) !important;
   border-radius: 0 !important;
   padding: 4px !important;
 }
 
 .ant-select-item {
-  color: var(--cream-dim) !important;
+  color: var(--text-dim) !important;
   border-radius: 0 !important;
 }
 
