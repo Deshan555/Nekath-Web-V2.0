@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nakath — Sri Lankan Astrology Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap"
+        rel="stylesheet" />
+    <style>
+        /* ─── RESET & ROOT ───────────────────────────────────────────────── */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --midnight: #060412;
+            --deep-navy: #0C0920;
+            --indigo: #14113A;
+            --gold: #C9A84C;
+            --gold-light: #E8C97A;
+            --gold-dim: #8B6F2E;
+            --crimson: #8B1A1A;
+            --crimson-l: #C0392B;
+            --cream: #F5EDD6;
+            --cream-dim: #D4C4A0;
+            --teal: #1A6B6B;
+            --teal-l: #2A9898;
+            --white: #FFFFFF;
+            --star-size: 1px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--midnight);
+            color: var(--cream);
+            font-family: 'EB Garamond', Georgia, serif;
+            overflow-x: hidden;
+            cursor: default;
+        }
+
+        /* ─── COSMIC CANVAS ─────────────────────────────────────────────── */
+        #cosmos {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        /* Star layers — three depths */
+        .stars-layer {
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(1px 1px at var(--x1, 10%) var(--y1, 20%), rgba(255, 255, 220, 0.9) 0%, transparent 100%),
+                radial-gradient(1px 1px at var(--x2, 25%) var(--y2, 55%), rgba(200, 200, 255, 0.7) 0%, transparent 100%),
+                radial-gradient(1px 1px at var(--x3, 40%) var(--y3, 10%), rgba(255, 255, 255, 0.8) 0%, transparent 100%),
+                radial-gradient(1px 1px at var(--x4, 60%) var(--y4, 80%), rgba(255, 240, 200, 0.9) 0%, transparent 100%),
+                radial-gradient(1px 1px at var(--x5, 75%) var(--y5, 35%), rgba(255, 255, 255, 0.6) 0%, transparent 100%),
+                radial-gradient(1px 1px at var(--x6, 90%) var(--y6, 65%), rgba(200, 220, 255, 0.8) 0%, transparent 100%),
+                radial-gradient(2px 2px at 5% 90%, rgba(255, 220, 150, 0.5) 0%, transparent 100%),
+                radial-gradient(2px 2px at 85% 5%, rgba(255, 255, 255, 0.5) 0%, transparent 100%),
+                radial-gradient(1px 1px at 50% 50%, rgba(255, 255, 255, 0.4) 0%, transparent 100%);
+        }
+
+        #stars1 {
+            --x1: 8%;
+            --y1: 18%;
+            --x2: 23%;
+            --y2: 52%;
+            --x3: 38%;
+            --y3: 8%;
+            --x4: 57%;
+            --y4: 77%;
+            --x5: 72%;
+            --y5: 32%;
+            --x6: 91%;
+            --y6: 61%;
+            animation: twinkle1 7s ease-in-out infinite alternate;
+            background-size: 400px 400px;
+        }
+
+        #stars2 {
+            --x1: 15%;
+            --y1: 72%;
+            --x2: 33%;
+            --y2: 14%;
+            --x3: 51%;
+            --y3: 88%;
+            --x4: 68%;
+            --y4: 41%;
+            --x5: 82%;
+            --y5: 67%;
+            --x6: 5%;
+            --y6: 44%;
+            animation: twinkle2 9s ease-in-out infinite alternate;
+            background-size: 300px 300px;
+            opacity: 0.7;
+        }
+
+        #stars3 {
+            background-image: none;
+            background-color: transparent;
+            background-image:
+                radial-gradient(1px 1px at 12% 33%, rgba(255, 255, 255, 0.6) 0%, transparent 100%),
+                radial-gradient(1px 1px at 29% 71%, rgba(255, 200, 150, 0.5) 0%, transparent 100%),
+                radial-gradient(1px 1px at 44% 22%, rgba(200, 255, 255, 0.5) 0%, transparent 100%),
+                radial-gradient(1px 1px at 63% 55%, rgba(255, 255, 200, 0.6) 0%, transparent 100%),
+                radial-gradient(1px 1px at 78% 88%, rgba(255, 255, 255, 0.4) 0%, transparent 100%),
+                radial-gradient(1px 1px at 95% 12%, rgba(255, 200, 200, 0.5) 0%, transparent 100%),
+                radial-gradient(1px 1px at 3% 60%, rgba(200, 200, 255, 0.5) 0%, transparent 100%),
+                radial-gradient(1px 1px at 50% 95%, rgba(255, 255, 255, 0.4) 0%, transparent 100%);
+            animation: twinkle3 11s ease-in-out infinite alternate;
+            background-size: 500px 500px;
+            opacity: 0.5;
+        }
+
+        @keyframes twinkle1 {
+            0% {
+                opacity: .6
+            }
+
+            50% {
+                opacity: 1
+            }
+
+            100% {
+                opacity: .7
+            }
+        }
+
+        @keyframes twinkle2 {
+            0% {
+                opacity: .4
+            }
+
+            60% {
+                opacity: .9
+            }
+
+            100% {
+                opacity: .5
+            }
+        }
+
+        @keyframes twinkle3 {
+            0% {
+                opacity: .3
+            }
+
+            40% {
+                opacity: .7
+            }
+
+            100% {
+                opacity: .4
+            }
+        }
+
+        /* Nebula glow blobs */
+        .nebula {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+        }
+
+        #nebula1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(42, 22, 100, 0.6) 0%, transparent 70%);
+            top: -150px;
+            left: -100px;
+            animation: drift1 20s ease-in-out infinite alternate;
+        }
+
+        #nebula2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(139, 26, 26, 0.25) 0%, transparent 70%);
+            bottom: 10%;
+            right: -80px;
+            animation: drift2 25s ease-in-out infinite alternate;
+        }
+
+        #nebula3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(26, 107, 107, 0.2) 0%, transparent 70%);
+            top: 40%;
+            left: 45%;
+            animation: drift3 18s ease-in-out infinite alternate;
+        }
+
+        @keyframes drift1 {
+            0% {
+                transform: translate(0, 0) scale(1)
+            }
+
+            100% {
+                transform: translate(60px, 40px) scale(1.15)
+            }
+        }
+
+        @keyframes drift2 {
+            0% {
+                transform: translate(0, 0) scale(1)
+            }
+
+            100% {
+                transform: translate(-50px, -30px) scale(1.1)
+            }
+        }
+
+        @keyframes drift3 {
+            0% {
+                transform: translate(0, 0) scale(1)
+            }
+
+            100% {
+                transform: translate(30px, -50px) scale(0.9)
+            }
+        }
+
+        /* ─── ORBITING PLANETS ──────────────────────────────────────────── */
+        .orbit-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(201, 168, 76, 0.08);
+            transform-origin: center;
+            pointer-events: none;
+        }
+
+        #orbit1 {
+            width: 700px;
+            height: 700px;
+            top: calc(50% - 350px);
+            left: calc(50% - 350px);
+            animation: spin-cw 80s linear infinite;
+        }
+
+        #orbit2 {
+            width: 1000px;
+            height: 1000px;
+            top: calc(50% - 500px);
+            left: calc(50% - 500px);
+            animation: spin-ccw 120s linear infinite;
+            border-color: rgba(201, 168, 76, 0.05);
+        }
+
+        @keyframes spin-cw {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin-ccw {
+            to {
+                transform: rotate(-360deg);
+            }
+        }
+
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            box-shadow: 0 0 12px currentColor, 0 0 30px currentColor;
+        }
+
+        /* placed on orbit1 ring */
+        #p-mangal {
+            /* Mars */
+            width: 10px;
+            height: 10px;
+            background: #D45555;
+            color: rgba(212, 85, 85, 0.5);
+            top: -5px;
+            left: calc(50% - 5px);
+        }
+
+        #p-budh {
+            /* Mercury */
+            width: 7px;
+            height: 7px;
+            background: #AAAACC;
+            color: rgba(170, 170, 200, 0.4);
+            bottom: -4px;
+            left: calc(50% - 4px);
+        }
+
+        /* placed on orbit2 ring */
+        #p-guru {
+            /* Jupiter */
+            width: 16px;
+            height: 16px;
+            background: #C9A84C;
+            color: rgba(201, 168, 76, 0.5);
+            top: -8px;
+            left: calc(50% - 8px);
+        }
+
+        #p-shani {
+            /* Saturn ring visual */
+            width: 12px;
+            height: 12px;
+            background: #B8A070;
+            color: rgba(184, 160, 112, 0.4);
+            bottom: -6px;
+            left: calc(50% - 6px);
+        }
+
+        /* ─── MANDALA / YANTRA BACKGROUND ──────────────────────────────── */
+        #yantra-wrap {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.045;
+            animation: slow-spin 200s linear infinite;
+        }
+
+        @keyframes slow-spin {
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        #yantra-svg {
+            width: 900px;
+            height: 900px;
+        }
+
+        /* ─── LAYOUT ─────────────────────────────────────────────────────── */
+        .page-wrap {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+        }
+
+        /* ─── NAV ────────────────────────────────────────────────────────── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 22px 56px;
+            background: linear-gradient(to bottom, rgba(6, 4, 18, 0.95) 0%, transparent 100%);
+            animation: fade-down 1s ease 0.2s both;
+        }
+
+        @keyframes fade-down {
+            from {
+                opacity: 0;
+                transform: translateY(-20px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        .nav-logo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 0.12em;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-logo .lotus {
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'Cinzel', serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--cream-dim);
+            text-decoration: none;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--midnight);
+            background: var(--gold);
+            padding: 10px 24px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            text-decoration: none;
+        }
+
+        .nav-cta:hover {
+            background: var(--gold-light);
+            transform: translateY(-1px);
+        }
+
+        /* ─── HERO ───────────────────────────────────────────────────────── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 40px 80px;
+            position: relative;
+        }
+
+        .hero-eyebrow {
+            font-family: 'Cinzel', serif;
+            font-size: 0.68rem;
+            letter-spacing: 0.45em;
+            text-transform: uppercase;
+            color: var(--gold-dim);
+            margin-bottom: 28px;
+            animation: rise 1s ease 0.5s both;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .hero-eyebrow::before,
+        .hero-eyebrow::after {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold-dim));
+        }
+
+        .hero-eyebrow::after {
+            transform: scaleX(-1);
+        }
+
+        .hero-sinhala {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.05rem;
+            color: var(--gold-dim);
+            margin-bottom: 16px;
+            animation: rise 1s ease 0.6s both;
+            letter-spacing: 0.08em;
+        }
+
+        .hero-title {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: clamp(3.8rem, 8vw, 7.5rem);
+            font-weight: 900;
+            line-height: 0.95;
+            letter-spacing: 0.06em;
+            color: transparent;
+            background: linear-gradient(135deg, #E8C97A 0%, #C9A84C 30%, #F5EDD6 55%, #C9A84C 75%, #8B6F2E 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: rise 1.2s ease 0.4s both;
+            text-shadow: none;
+            position: relative;
+        }
+
+        .hero-title::after {
+            content: 'NAKATH';
+            position: absolute;
+            inset: 0;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(201, 168, 76, 0.15);
+            animation: shimmer 6s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+
+            0%,
+            100% {
+                filter: brightness(1);
+            }
+
+            50% {
+                filter: brightness(1.15);
+            }
+        }
+
+        .hero-subtitle-en {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(0.75rem, 1.5vw, 1rem);
+            letter-spacing: 0.38em;
+            text-transform: uppercase;
+            color: var(--cream-dim);
+            margin-top: 20px;
+            animation: rise 1s ease 0.8s both;
+        }
+
+        .hero-divider {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin: 40px auto;
+            width: min(520px, 90vw);
+            animation: rise 1s ease 0.9s both;
+        }
+
+        .hero-divider-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+        }
+
+        .hero-divider-gem {
+            width: 8px;
+            height: 8px;
+            background: var(--gold);
+            transform: rotate(45deg);
+            box-shadow: 0 0 8px var(--gold);
+        }
+
+        .hero-description {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(1.05rem, 2vw, 1.25rem);
+            font-style: italic;
+            color: var(--cream-dim);
+            max-width: 640px;
+            line-height: 1.75;
+            animation: rise 1s ease 1s both;
+            margin-bottom: 52px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: rise 1s ease 1.1s both;
+        }
+
+        .btn-primary {
+            font-family: 'Cinzel', serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--midnight);
+            background: linear-gradient(135deg, #E8C97A, #C9A84C);
+            padding: 16px 40px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.25s, box-shadow 0.25s;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(201, 168, 76, 0.4);
+        }
+
+        .btn-primary:hover::before {
+            transform: translateX(100%);
+        }
+
+        .btn-ghost {
+            font-family: 'Cinzel', serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--gold);
+            background: transparent;
+            padding: 15px 40px;
+            border: 1px solid rgba(201, 168, 76, 0.4);
+            cursor: pointer;
+            text-decoration: none;
+            transition: border-color 0.3s, color 0.3s, background 0.3s;
+            display: inline-block;
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--gold);
+            background: rgba(201, 168, 76, 0.05);
+        }
+
+        @keyframes rise {
+            from {
+                opacity: 0;
+                transform: translateY(30px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        /* ─── SCROLL INDICATOR ───────────────────────────────────────────── */
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            animation: rise 1s ease 1.4s both;
+            opacity: 0.5;
+        }
+
+        .scroll-hint span {
+            font-family: 'Cinzel', serif;
+            font-size: 0.55rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--cream-dim);
+        }
+
+        .scroll-mouse {
+            width: 22px;
+            height: 34px;
+            border: 1px solid rgba(201, 168, 76, 0.4);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            padding-top: 6px;
+        }
+
+        .scroll-mouse-dot {
+            width: 3px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 2px;
+            animation: scroll-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes scroll-dot {
+            0% {
+                transform: translateY(0);
+                opacity: 1
+            }
+
+            80% {
+                transform: translateY(12px);
+                opacity: 0
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 0
+            }
+        }
+
+        /* ─── SECTION: FEATURES ─────────────────────────────────────────── */
+        .features-section {
+            padding: 120px 56px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-eyebrow {
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.45em;
+            text-transform: uppercase;
+            color: var(--gold-dim);
+            text-align: center;
+            margin-bottom: 16px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s, transform 0.7s;
+        }
+
+        .section-title {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            text-align: center;
+            color: var(--cream);
+            margin-bottom: 16px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s 0.1s, transform 0.7s 0.1s;
+        }
+
+        .section-sub {
+            font-family: 'EB Garamond', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--cream-dim);
+            text-align: center;
+            margin-bottom: 70px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s 0.2s, transform 0.7s 0.2s;
+        }
+
+        .in-view .section-eyebrow,
+        .in-view .section-title,
+        .in-view .section-sub {
+            opacity: 1;
+            transform: none;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(201, 168, 76, 0.08);
+            padding: 48px 36px;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.4s, border-color 0.4s, transform 0.4s;
+            cursor: default;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s, transform 0.6s, background 0.4s, border-color 0.4s;
+        }
+
+        .feature-card.card-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        .feature-card:nth-child(2) {
+            transition-delay: 0.1s;
+        }
+
+        .feature-card:nth-child(3) {
+            transition-delay: 0.2s;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+
+        .feature-card:hover {
+            background: rgba(201, 168, 76, 0.04);
+            border-color: rgba(201, 168, 76, 0.2);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-glyph {
+            font-size: 2.8rem;
+            margin-bottom: 24px;
+            display: block;
+            filter: drop-shadow(0 0 12px rgba(201, 168, 76, 0.4));
+        }
+
+        .feature-num {
+            font-family: 'Cinzel', serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.4em;
+            color: var(--gold-dim);
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        .feature-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.05rem;
+            color: var(--cream);
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .feature-desc {
+            font-family: 'EB Garamond', serif;
+            font-size: 1rem;
+            color: var(--cream-dim);
+            line-height: 1.7;
+        }
+
+        .feature-tag {
+            display: inline-block;
+            margin-top: 20px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.58rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold-dim);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            padding: 5px 14px;
+        }
+
+        /* ─── SECTION: HOW IT WORKS ─────────────────────────────────────── */
+        .how-section {
+            padding: 100px 56px;
+            border-top: 1px solid rgba(201, 168, 76, 0.08);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.08);
+            background: rgba(255, 255, 255, 0.012);
+        }
+
+        .how-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .steps-list {
+            margin-top: 64px;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 0 40px;
+            position: relative;
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        .step.step-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        .step:nth-child(2) {
+            transition-delay: 0.15s;
+        }
+
+        .step:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .step:nth-child(4) {
+            transition-delay: 0.45s;
+        }
+
+        .step-num-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .step-circle {
+            width: 52px;
+            height: 52px;
+            border: 1px solid rgba(201, 168, 76, 0.4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: var(--gold);
+            flex-shrink: 0;
+            background: rgba(201, 168, 76, 0.05);
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .step:hover .step-circle {
+            background: rgba(201, 168, 76, 0.15);
+            border-color: var(--gold);
+        }
+
+        .step-line {
+            flex: 1;
+            width: 1px;
+            background: linear-gradient(to bottom, rgba(201, 168, 76, 0.3), rgba(201, 168, 76, 0.05));
+            margin: 8px 0;
+            min-height: 40px;
+        }
+
+        .step:last-child .step-line {
+            display: none;
+        }
+
+        .step-body {
+            padding: 12px 0 48px;
+        }
+
+        .step-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.62rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--gold-dim);
+            margin-bottom: 8px;
+        }
+
+        .step-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            color: var(--cream);
+            margin-bottom: 10px;
+        }
+
+        .step-text {
+            font-family: 'EB Garamond', serif;
+            font-size: 1rem;
+            color: var(--cream-dim);
+            line-height: 1.7;
+            max-width: 560px;
+        }
+
+        /* ─── SECTION: SUBSCRIPTION ─────────────────────────────────────── */
+        .plans-section {
+            padding: 120px 56px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+            margin-top: 64px;
+        }
+
+        .plan-card {
+            padding: 44px 28px;
+            border: 1px solid rgba(201, 168, 76, 0.1);
+            background: rgba(255, 255, 255, 0.02);
+            position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        .plan-card.plan-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        .plan-card:nth-child(2) {
+            transition-delay: 0.1s;
+        }
+
+        .plan-card:nth-child(3) {
+            transition-delay: 0.2s;
+        }
+
+        .plan-card:nth-child(4) {
+            transition-delay: 0.3s;
+        }
+
+        .plan-card.featured {
+            background: rgba(201, 168, 76, 0.06);
+            border-color: rgba(201, 168, 76, 0.35);
+            transform: translateY(-8px) !important;
+        }
+
+        .plan-card.featured.plan-visible {
+            transform: translateY(-8px) !important;
+        }
+
+        .plan-featured-badge {
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: var(--midnight);
+            font-family: 'Cinzel', serif;
+            font-size: 0.55rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            padding: 5px 18px;
+            white-space: nowrap;
+        }
+
+        .plan-tier {
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--gold-dim);
+            margin-bottom: 10px;
+        }
+
+        .plan-name {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.2rem;
+            color: var(--cream);
+            margin-bottom: 24px;
+        }
+
+        .plan-price {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 4px;
+            line-height: 1;
+        }
+
+        .plan-period {
+            font-family: 'EB Garamond', serif;
+            font-size: 0.88rem;
+            color: var(--cream-dim);
+            margin-bottom: 28px;
+        }
+
+        .plan-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(201, 168, 76, 0.2), transparent);
+            margin-bottom: 28px;
+        }
+
+        .plan-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 32px;
+        }
+
+        .plan-features li {
+            font-family: 'EB Garamond', serif;
+            font-size: 0.95rem;
+            color: var(--cream-dim);
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            line-height: 1.4;
+        }
+
+        .plan-features li .check {
+            color: var(--gold);
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .plan-features li .cross {
+            color: rgba(255, 255, 255, 0.2);
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .plan-btn {
+            display: block;
+            width: 100%;
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            text-align: center;
+            padding: 13px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            color: var(--gold);
+            background: transparent;
+        }
+
+        .plan-btn:hover {
+            background: rgba(201, 168, 76, 0.1);
+            border-color: var(--gold);
+        }
+
+        .plan-btn.primary {
+            background: linear-gradient(135deg, #E8C97A, #C9A84C);
+            color: var(--midnight);
+            border-color: transparent;
+        }
+
+        .plan-btn.primary:hover {
+            filter: brightness(1.1);
+            transform: translateY(-1px);
+        }
+
+        /* ─── FOOTER BAND ────────────────────────────────────────────────── */
+        .footer-band {
+            border-top: 1px solid rgba(201, 168, 76, 0.1);
+            padding: 60px 56px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .footer-logo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.2rem;
+            color: var(--gold);
+            letter-spacing: 0.1em;
+        }
+
+        .footer-copy {
+            font-family: 'EB Garamond', serif;
+            font-size: 0.88rem;
+            color: rgba(213, 196, 160, 0.4);
+            font-style: italic;
+        }
+
+        .footer-lang {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-lang a {
+            font-family: 'Cinzel', serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--cream-dim);
+            text-decoration: none;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+
+        .footer-lang a:hover {
+            opacity: 1;
+            color: var(--gold);
+        }
+
+        /* ─── RESPONSIVE ─────────────────────────────────────────────────── */
+        @media (max-width: 900px) {
+            nav {
+                padding: 18px 28px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .plans-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-band {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .plans-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-section,
+            .plans-section,
+            .how-section {
+                padding: 80px 24px;
+            }
+
+            #orbit1,
+            #orbit2 {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══ COSMIC BACKDROP ══════════════════════════════════════════════ -->
+    <div id="cosmos">
+        <div class="nebula" id="nebula1"></div>
+        <div class="nebula" id="nebula2"></div>
+        <div class="nebula" id="nebula3"></div>
+        <div class="stars-layer" id="stars1"></div>
+        <div class="stars-layer" id="stars2"></div>
+        <div class="stars-layer" id="stars3"></div>
+        <div class="orbit-ring" id="orbit1">
+            <div class="planet" id="p-mangal"></div>
+            <div class="planet" id="p-budh"></div>
+        </div>
+        <div class="orbit-ring" id="orbit2">
+            <div class="planet" id="p-guru"></div>
+            <div class="planet" id="p-shani"></div>
+        </div>
+    </div>
+
+    <!-- ═══ YANTRA / MANDALA ═════════════════════════════════════════════ -->
+    <div id="yantra-wrap">
+        <svg id="yantra-svg" viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <g stroke="#C9A84C" stroke-width="0.8" opacity="1">
+                <!-- Sri Yantra-inspired geometric layers -->
+                <circle cx="450" cy="450" r="420" stroke-dasharray="4 8" />
+                <circle cx="450" cy="450" r="380" />
+                <circle cx="450" cy="450" r="340" stroke-dasharray="2 6" />
+                <circle cx="450" cy="450" r="300" />
+                <circle cx="450" cy="450" r="260" stroke-dasharray="3 9" />
+                <circle cx="450" cy="450" r="200" />
+                <circle cx="450" cy="450" r="140" />
+                <circle cx="450" cy="450" r="80" />
+
+                <!-- Outer 16-petal lotus -->
+                <g transform="translate(450,450)">
+                    <g>
+                        <ellipse cx="0" cy="-370" rx="22" ry="60" transform="rotate(0)" />
+                    </g>
+                    <g>
+                        <ellipse cx="0" cy="-370" rx="22" ry="60" transform="rotate(22.5)" />
+                    </g>
+                    <g>
+                        <ellipse cx="0" cy="-370" rx="22" ry="60" transform="rotate(45)" />
+                    </g>
+                    <g>
+                        <ellipse cx="0" cy="-370" rx="22" ry="60" transform="rotate(67.5)" />
+                    </g>
+                    <g>
+                        <ellipse cx="0" cy="-370" rx="22" ry="60" transform="rotate(90)" />
+                    </g>
+                    <g>
+                        <ellipse cx="0" cy="-370" rx="22" ry="60" transform="rotate(112.5)" />
+                    </g>
+                    <g>
+                        <ellipse cx="0" cy="-370" rx="22" ry="60" transform="rotate(135)" />
+                    </g>
+                    <g>
+                        <ellipse cx="0" cy="-370" rx="22" ry="60" transform="rotate(157.5)" />
+                    </g>
+                    <g>
+                        <ellipse cx="0" cy="-370" rx="22" ry="60" transform="rotate(180)" />
+                    </g>
+                    <g>
+                        <ellipse cx="0" cy="-370" rx="22" ry="60" transform="rotate(202.5)" />
+                    </g>
+                    <g>
+                        <ellipse cx="0" cy="-370" rx="22" ry="60" transform="rotate(225)" />
+                    </g>
+                    <g>
+                        <ellipse cx="0" cy="-370" rx="22" ry="60" transform="rotate(247.5)" />
+                    </g>
+                    <g>
+                        <ellipse cx="0" cy="-370" rx="22" ry="60" transform="rotate(270)" />
+                    </g>
+                    <g>
+                        <ellipse cx="0" cy="-370" rx="22" ry="60" transform="rotate(292.5)" />
+                    </g>
+                    <g>
+                        <ellipse cx="0" cy="-370" rx="22" ry="60" transform="rotate(315)" />
+                    </g>
+                    <g>
+                        <ellipse cx="0" cy="-370" rx="22" ry="60" transform="rotate(337.5)" />
+                    </g>
+
+                    <!-- Inner 8-petal lotus -->
+                    <g>
+                        <ellipse cx="0" cy="-250" rx="16" ry="42" transform="rotate(0)" />
+                    </g>
+                    <g>
+                        <ellipse cx="0" cy="-250" rx="16" ry="42" transform="rotate(45)" />
+                    </g>
+                    <g>
+                        <ellipse cx="0" cy="-250" rx="16" ry="42" transform="rotate(90)" />
+                    </g>
+                    <g>
+                        <ellipse cx="0" cy="-250" rx="16" ry="42" transform="rotate(135)" />
+                    </g>
+                    <g>
+                        <ellipse cx="0" cy="-250" rx="16" ry="42" transform="rotate(180)" />
+                    </g>
+                    <g>
+                        <ellipse cx="0" cy="-250" rx="16" ry="42" transform="rotate(225)" />
+                    </g>
+                    <g>
+                        <ellipse cx="0" cy="-250" rx="16" ry="42" transform="rotate(270)" />
+                    </g>
+                    <g>
+                        <ellipse cx="0" cy="-250" rx="16" ry="42" transform="rotate(315)" />
+                    </g>
+
+                    <!-- Upward triangle -->
+                    <polygon points="0,-290 251,145 -251,145" stroke-width="1.5" />
+                    <!-- Downward triangle -->
+                    <polygon points="0,290 251,-145 -251,-145" stroke-width="1.5" />
+                    <!-- Second upward -->
+                    <polygon points="0,-220 190,110 -190,110" />
+                    <!-- Second downward -->
+                    <polygon points="0,220 190,-110 -190,-110" />
+                    <!-- Third upward -->
+                    <polygon points="0,-155 134,77 -134,77" />
+                    <!-- Third downward -->
+                    <polygon points="0,155 134,-77 -134,-77" />
+                    <!-- Fourth -->
+                    <polygon points="0,-100 87,50 -87,50" />
+                    <polygon points="0,100 87,-50 -87,-50" />
+                    <!-- Center dot -->
+                    <circle cx="0" cy="0" r="6" fill="#C9A84C" stroke="none" />
+                </g>
+
+                <!-- Square border with gates -->
+                <rect x="80" y="80" width="740" height="740" stroke-dasharray="5 15" />
+                <rect x="60" y="60" width="780" height="780" />
+            </g>
+        </svg>
+    </div>
+
+    <!-- ═══ PAGE WRAP ════════════════════════════════════════════════════ -->
+    <div class="page-wrap">
+
+        <!-- ─── NAV ─────────────────────────────────────────────────────── -->
+        <nav>
+            <a href="#" class="nav-logo">
+                <span class="lotus">✿</span>
+                NAKATH
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how">How It Works</a></li>
+                <li><a href="#plans">Pricing</a></li>
+                <li><a href="#">Astrologers</a></li>
+            </ul>
+            <a href="#" class="nav-cta">Begin Your Journey</a>
+        </nav>
+
+        <!-- ─── HERO ─────────────────────────────────────────────────────── -->
+        <section class="hero">
+            <p class="hero-sinhala">නකත් — ශ්‍රී ලාංකික ජ්‍යෝතිෂ්‍ය</p>
+            <div class="hero-eyebrow">Traditional Sri Lankan Astrology</div>
+            <h1 class="hero-title">NAKATH</h1>
+            <p class="hero-subtitle-en">The Auspicious Moment &nbsp;·&nbsp; Your Stars &nbsp;·&nbsp; Your Destiny</p>
+
+            <div class="hero-divider">
+                <div class="hero-divider-line"></div>
+                <div class="hero-divider-gem"></div>
+                <div class="hero-divider-line"></div>
+            </div>
+
+            <p class="hero-description">
+                Personalized horoscopes, auspicious day guidance, and partner matching
+                rooted in authentic Sri Lankan Jyotisha tradition —
+                in Sinhala, Tamil &amp; English.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#" class="btn-primary">Reveal My Chart</a>
+                <a href="#features" class="btn-ghost">Explore Features</a>
+            </div>
+
+            <div class="scroll-hint">
+                <div class="scroll-mouse">
+                    <div class="scroll-mouse-dot"></div>
+                </div>
+                <span>Discover</span>
+            </div>
+        </section>
+
+        <!-- ─── FEATURES ─────────────────────────────────────────────────── -->
+        <section class="features-section" id="features">
+            <div class="observe-target">
+                <p class="section-eyebrow">Three Sacred Pillars</p>
+                <h2 class="section-title">What Nakath Offers</h2>
+                <p class="section-sub">Ancient wisdom. Precise calculation. Modern access.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-glyph">🪐</span>
+                    <span class="feature-num">01 — Horoscopes</span>
+                    <h3 class="feature-name">Personalized Jathaka</h3>
+                    <p class="feature-desc">
+                        Daily, weekly, and annual readings built on your Lagna, Moon sign,
+                        and Vimshottari Dasa periods — not generic sun-sign columns.
+                        Your birth chart, your life.
+                    </p>
+                    <span class="feature-tag">Sinhala · Tamil · English</span>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-glyph">📅</span>
+                    <span class="feature-num">02 — Nakath Calendar</span>
+                    <h3 class="feature-name">Auspicious Day Finder</h3>
+                    <p class="feature-desc">
+                        Select the perfect moment for weddings, business ventures, home
+                        entry, and travel. Tithi, Nakshatra, Rahu Kala, and Yoga —
+                        calculated for your chart.
+                    </p>
+                    <span class="feature-tag">10 Activity Types</span>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-glyph">💍</span>
+                    <span class="feature-num">03 — Porondam</span>
+                    <h3 class="feature-name">Partner Matching</h3>
+                    <p class="feature-desc">
+                        Full Ashtakoota compatibility analysis with Mangala Dosha,
+                        Nadi Dosha checks, and cancellation logic — the trusted Sri Lankan
+                        framework for marriage guidance.
+                    </p>
+                    <span class="feature-tag">36-Point Analysis · PDF Export</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── HOW IT WORKS ──────────────────────────────────────────────── -->
+        <section class="how-section" id="how">
+            <div class="how-inner">
+                <div class="observe-target">
+                    <p class="section-eyebrow">Your Path</p>
+                    <h2 class="section-title">How It Works</h2>
+                    <p class="section-sub">Precision astrology requires only your birth details</p>
+                </div>
+
+                <ol class="steps-list">
+                    <li class="step">
+                        <div class="step-num-col">
+                            <div class="step-circle">I</div>
+                            <div class="step-line"></div>
+                        </div>
+                        <div class="step-body">
+                            <p class="step-label">Step One</p>
+                            <h4 class="step-title">Enter Your Birth Details</h4>
+                            <p class="step-text">
+                                Provide your date and exact time of birth — the two pillars on which
+                                accurate Vedic astrology stands. Birthplace is recommended for
+                                precise Lagna calculation.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <div class="step-num-col">
+                            <div class="step-circle">II</div>
+                            <div class="step-line"></div>
+                        </div>
+                        <div class="step-body">
+                            <p class="step-label">Step Two</p>
+                            <h4 class="step-title">Your Chart Is Cast</h4>
+                            <p class="step-text">
+                                Our astrological engine — powered by the Swiss Ephemeris with
+                                Lahiri Ayanamsa — calculates your Rasi chart, Navamsa, Nakshatra,
+                                and full Dasa timeline instantly.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <div class="step-num-col">
+                            <div class="step-circle">III</div>
+                            <div class="step-line"></div>
+                        </div>
+                        <div class="step-body">
+                            <p class="step-label">Step Three</p>
+                            <h4 class="step-title">Receive Daily Guidance</h4>
+                            <p class="step-text">
+                                Read your personalized horoscope each morning. Browse your Nakath
+                                calendar for the month. Get notified before major planetary transits
+                                affect your chart.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <div class="step-num-col">
+                            <div class="step-circle">IV</div>
+                            <div class="step-line"></div>
+                        </div>
+                        <div class="step-body">
+                            <p class="step-label">Step Four</p>
+                            <h4 class="step-title">Go Deeper When You Need It</h4>
+                            <p class="step-text">
+                                Generate a partner compatibility report before an important proposal.
+                                Book a live session with a verified Sri Lankan astrologer.
+                                Download your full Jathaka as a beautifully formatted PDF.
+                            </p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- ─── PLANS ─────────────────────────────────────────────────────── -->
+        <section class="plans-section" id="plans">
+            <div class="observe-target">
+                <p class="section-eyebrow">Subscription Plans</p>
+                <h2 class="section-title">Choose Your Path</h2>
+                <p class="section-sub">Start free. Upgrade when the stars align.</p>
+            </div>
+
+            <div class="plans-grid">
+                <!-- FREE -->
+                <div class="plan-card">
+                    <p class="plan-tier">Free</p>
+                    <p class="plan-name">Aaramba</p>
+                    <p class="plan-price">LKR 0</p>
+                    <p class="plan-period">forever</p>
+                    <div class="plan-divider"></div>
+                    <ul class="plan-features">
+                        <li><span class="check">✦</span>Daily &amp; Weekly Horoscope</li>
+                        <li><span class="check">✦</span>Basic Nakath Calendar</li>
+                        <li><span class="check">✦</span>Birth Chart View</li>
+                        <li><span class="cross">·</span>Personalized Calendar</li>
+                        <li><span class="cross">·</span>Partner Matching</li>
+                        <li><span class="cross">·</span>PDF Reports</li>
+                    </ul>
+                    <a href="#" class="plan-btn">Begin Free</a>
+                </div>
+
+                <!-- BASIC -->
+                <div class="plan-card">
+                    <p class="plan-tier">Basic</p>
+                    <p class="plan-name">Nakath</p>
+                    <p class="plan-price">LKR 490</p>
+                    <p class="plan-period">per month</p>
+                    <div class="plan-divider"></div>
+                    <ul class="plan-features">
+                        <li><span class="check">✦</span>All Free features</li>
+                        <li><span class="check">✦</span>Monthly &amp; Annual Reports</li>
+                        <li><span class="check">✦</span>Personalized Nakath Calendar</li>
+                        <li><span class="check">✦</span>Dasa Period Dashboard</li>
+                        <li><span class="check">✦</span>Transit Alerts</li>
+                        <li><span class="cross">·</span>Partner Matching</li>
+                    </ul>
+                    <a href="#" class="plan-btn">Get Basic</a>
+                </div>
+
+                <!-- PLUS — FEATURED -->
+                <div class="plan-card featured">
+                    <div class="plan-featured-badge">Most Popular</div>
+                    <p class="plan-tier">Plus</p>
+                    <p class="plan-name">Porondam</p>
+                    <p class="plan-price">LKR 990</p>
+                    <p class="plan-period">per month</p>
+                    <div class="plan-divider"></div>
+                    <ul class="plan-features">
+                        <li><span class="check">✦</span>All Basic features</li>
+                        <li><span class="check">✦</span>Partner Matching Report</li>
+                        <li><span class="check">✦</span>PDF Compatibility Export</li>
+                        <li><span class="check">✦</span>Dosha Remedies Guide</li>
+                        <li><span class="check">✦</span>Calendar Sync (Google/iCal)</li>
+                        <li><span class="check">✦</span>Ad-free Experience</li>
+                    </ul>
+                    <a href="#" class="plan-btn primary">Get Plus</a>
+                </div>
+
+                <!-- PREMIUM -->
+                <div class="plan-card">
+                    <p class="plan-tier">Premium</p>
+                    <p class="plan-name">Nakath Premium</p>
+                    <p class="plan-price">LKR 2,490</p>
+                    <p class="plan-period">per month</p>
+                    <div class="plan-divider"></div>
+                    <ul class="plan-features">
+                        <li><span class="check">✦</span>All Plus features</li>
+                        <li><span class="check">✦</span>Live Astrologer Session</li>
+                        <li><span class="check">✦</span>Unlimited Matching Reports</li>
+                        <li><span class="check">✦</span>Custom Report Requests</li>
+                        <li><span class="check">✦</span>Vivaha Nakath Guidance</li>
+                        <li><span class="check">✦</span>Priority Support</li>
+                    </ul>
+                    <a href="#" class="plan-btn">Get Premium</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── FOOTER BAND ───────────────────────────────────────────────── -->
+        <footer class="footer-band">
+            <div class="footer-logo">✿ NAKATH</div>
+            <p class="footer-copy">© 2026 Nakath Platform · Rooted in tradition, built for today</p>
+            <div class="footer-lang">
+                <a href="#">සිංහල</a>
+                <a href="#">தமிழ்</a>
+                <a href="#">English</a>
+            </div>
+        </footer>
+
+    </div><!-- /page-wrap -->
+
+    <script>
+        // ─── SCROLL ANIMATIONS ──────────────────────────────────────────────
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    // Section headings
+                    if (e.target.classList.contains('observe-target')) {
+                        e.target.closest('section').querySelectorAll('.section-eyebrow,.section-title,.section-sub')
+                            .forEach(el => el.parentElement.classList.add('in-view') || el.style.setProperty('opacity', '1') || el.style.setProperty('transform', 'none'));
+                        e.target.querySelectorAll('.section-eyebrow,.section-title,.section-sub')
+                            .forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; });
+                    }
+                    // Feature cards
+                    if (e.target.classList.contains('feature-card')) {
+                        e.target.classList.add('card-visible');
+                    }
+                    // Steps
+                    if (e.target.classList.contains('step')) {
+                        e.target.classList.add('step-visible');
+                    }
+                    // Plan cards
+                    if (e.target.classList.contains('plan-card')) {
+                        e.target.classList.add('plan-visible');
+                    }
+                    io.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.observe-target, .feature-card, .step, .plan-card')
+            .forEach(el => io.observe(el));
+
+        // ─── PARALLAX STARS ON MOUSE MOVE ───────────────────────────────────
+        document.addEventListener('mousemove', (e) => {
+            const cx = window.innerWidth / 2;
+            const cy = window.innerHeight / 2;
+            const dx = (e.clientX - cx) / cx;
+            const dy = (e.clientY - cy) / cy;
+            document.getElementById('stars1').style.transform = `translate(${dx * 12}px, ${dy * 12}px)`;
+            document.getElementById('stars2').style.transform = `translate(${dx * 8}px, ${dy * 8}px)`;
+            document.getElementById('stars3').style.transform = `translate(${dx * 5}px, ${dy * 5}px)`;
+            document.getElementById('nebula3').style.transform = `translate(${dx * 20}px, ${dy * 20}px)`;
+        });
+
+        // ─── SMOOTH SCROLL ──────────────────────────────────────────────────
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+            });
+        });
+    </script>
+</body>
+
+</html>

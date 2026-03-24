@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
+:root {
+  --midnight:  #060412;
+  --deep-navy: #0C0920;
+  --indigo:    #14113A;
+  --gold:      #C9A84C;
+  --gold-light:#E8C97A;
+  --gold-dim:  #8B6F2E;
+  --crimson:   #8B1A1A;
+  --crimson-l: #C0392B;
+  --cream:     #F5EDD6;
+  --cream-dim: #D4C4A0;
+  --teal:      #1A6B6B;
+  --teal-l:    #2A9898;
+  --white:     #FFFFFF;
+
+  font-family: 'EB Garamond', Georgia, serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: var(--cream);
+  background-color: var(--midnight);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+}
+
+/* Cosmic Background Animations from template */
+@keyframes twinkle1 { 0%{opacity:.6} 50%{opacity:1} 100%{opacity:.7} }
+@keyframes twinkle2 { 0%{opacity:.4} 60%{opacity:.9} 100%{opacity:.5} }
+@keyframes twinkle3 { 0%{opacity:.3} 40%{opacity:.7} 100%{opacity:.4} }
+
+@keyframes drift1 { 0%{transform:translate(0,0) scale(1)} 100%{transform:translate(60px,40px) scale(1.15)} }
+@keyframes drift2 { 0%{transform:translate(0,0) scale(1)} 100%{transform:translate(-50px,-30px) scale(1.1)} }
+@keyframes drift3 { 0%{transform:translate(0,0) scale(1)} 100%{transform:translate(30px,-50px) scale(0.9)} }
+
+@keyframes spin-cw  { to { transform: rotate(360deg); } }
+@keyframes spin-ccw { to { transform: rotate(-360deg); } }
+
+@keyframes slow-spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+.font-cinzel { font-family: 'Cinzel', serif; }
+.font-cinzel-dec { font-family: 'Cinzel Decorative', serif; }
+.font-garamond { font-family: 'EB Garamond', serif; }
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #E8C97A 0%, #C9A84C 30%, #F5EDD6 55%, #C9A84C 75%, #8B6F2E 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
