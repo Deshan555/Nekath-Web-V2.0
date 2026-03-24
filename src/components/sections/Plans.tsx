@@ -99,13 +99,13 @@ export const Plans = () => {
             <p className="font-cinzel text-[0.65rem] tracking-[0.4em] uppercase text-[var(--gold-dim)] mb-2.5">{p.tier}</p>
             <h3 className="font-cinzel-dec text-xl text-[var(--cream)] mb-6">{p.name}</h3>
             <p className="font-cinzel text-3xl text-[var(--gold)] mb-1 leading-none">{p.price}</p>
-            <p className="font-garamond text-sm text-[var(--cream-dim)] mb-7">{p.period}</p>
+            <p className="font-poppins text-sm text-[var(--cream-dim)] mb-7">{p.period}</p>
             
             <Divider className="border-[var(--gold)]/20 my-7" />
             
             <ul className="flex flex-col gap-2.5 mb-8 list-none p-0">
               {p.features.map((f, fi) => (
-                <li key={fi} className="font-garamond text-[0.95rem] text-[var(--cream-dim)] flex gap-2.5 items-start leading-tight">
+                <li key={fi} className="font-poppins text-[0.95rem] text-[var(--cream-dim)] flex gap-2.5 items-start leading-tight">
                   {f.included ? (
                     <FontAwesomeIcon icon={faCircleCheck} className="text-[var(--gold)] mt-1 flex-shrink-0" />
                   ) : (

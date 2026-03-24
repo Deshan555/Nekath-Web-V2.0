@@ -67,7 +67,7 @@ export const HowItWorks = () => {
               <div className="pt-3 pb-12">
                 <p className="font-cinzel text-[0.62rem] tracking-[0.35em] uppercase text-[var(--gold-dim)] mb-2">{s.label}</p>
                 <h4 className="font-cinzel text-lg text-[var(--cream)] mb-2.5">{s.title}</h4>
-                <p className="font-garamond text-base text-[var(--cream-dim)] leading-relaxed max-w-xl">{s.text}</p>
+                <p className="font-poppins text-base text-[var(--cream-dim)] leading-relaxed max-w-xl">{s.text}</p>
               </div>
             </motion.div>
           ))}

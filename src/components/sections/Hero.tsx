@@ -6,7 +6,7 @@ export const Hero = () => (
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: 0.6, duration: 1 }}
-      className="font-garamond text-lg text-[var(--gold-dim)] mb-4 tracking-[0.08em]"
+      className="font-poppins text-lg text-[var(--gold-dim)] mb-4 tracking-[0.08em]"
     >
       නකත් — ශ්‍රී ලාංකික ජ්‍යෝතිෂ්‍ය
     </motion.p>
@@ -56,7 +56,7 @@ export const Hero = () => (
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: 1.0, duration: 1 }}
-      className="font-garamond italic text-lg md:text-2xl text-[var(--cream-dim)] max-w-2xl leading-relaxed mb-14"
+      className="font-poppins italic text-lg md:text-2xl text-[var(--cream-dim)] max-w-2xl leading-relaxed mb-14"
     >
       Personalized horoscopes, auspicious day guidance, and partner matching
       rooted in authentic Sri Lankan Jyotisha tradition —

@@ -69,7 +69,7 @@ export const Features = () => {
               </div>
               <span className="font-cinzel text-[0.6rem] tracking-[0.4em] text-[var(--gold-dim)] uppercase mb-3 block">{f.num}</span>
               <h3 className="font-cinzel text-lg text-[var(--cream)] mb-4 leading-tight">{f.name}</h3>
-              <p className="font-garamond text-base text-[var(--cream-dim)] leading-relaxed mb-6">{f.desc}</p>
+              <p className="font-poppins text-base text-[var(--cream-dim)] leading-relaxed mb-6">{f.desc}</p>
               <span className="inline-block font-cinzel text-[0.58rem] tracking-[0.25em] uppercase text-[var(--gold-dim)] border border-[var(--gold)]/20 px-3.5 py-1">{f.tag}</span>
             </motion.div>
           ))}
