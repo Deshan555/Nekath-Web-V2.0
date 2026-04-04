@@ -22,7 +22,7 @@ export const Chatbot = () => {
     
     // Mock bot response
     setTimeout(() => {
-      setMessages([...newMsgs, { text: "The alignment of the stars suggests a period of patience. Your inquiry is being decoded by the Nakath engine...", isBot: true }]);
+      setMessages([...newMsgs, { text: "The alignment of the stars suggests a period of patience. Your inquiry is being decoded by the Astrological engine...", isBot: true }]);
     }, 1000);
   };
 
@@ -66,7 +66,7 @@ export const Chatbot = () => {
             <div className="p-3 border-t border-[var(--panel-border)] bg-[var(--midnight)]">
                <div className="flex gap-2">
                  <Input 
-                   placeholder="Ask about your Nakath..." 
+                   placeholder="Ask about your Astrological..." 
                    className="bg-[var(--panel-bg)] border-[var(--panel-border)] text-[var(--text-main)] placeholder:text-[var(--text-dim)]/40 text-xs"
                    value={input}
                    onChange={e => setInput(e.target.value)}

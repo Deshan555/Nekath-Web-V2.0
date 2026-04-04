@@ -63,8 +63,8 @@ export const HoroscopeChart: React.FC<HoroscopeChartProps> = ({
       {/* Center Decorative Element */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="w-24 h-24 border border-[var(--gold)]/20 rotate-45 flex items-center justify-center">
-            <div className="w-16 h-16 border border-[var(--gold)]/10 -rotate-45 flex items-center justify-center opacity-20">
-                <span className="font-cinzel-dec text-2xl text-[var(--gold)]">✿</span>
+            <div className="w-16 h-16 -rotate-45 flex items-center justify-center opacity-40">
+                <img src="/logo.png" className="w-12 h-12 object-contain" alt="Astrological Logo" />
             </div>
         </div>
       </div>

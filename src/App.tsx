@@ -13,7 +13,7 @@ import { ScrollHaptics } from './components/ScrollHaptics';
 import { Login } from './pages/Login';
 import { Dashboard } from './pages/Dashboard';
 import { MatchingPage } from './pages/MatchingPage';
-import { NakathPage } from './pages/NakathPage';
+import { AstrologicalPage } from './pages/AstrologicalPage';
 
 function App() {
   return (
@@ -50,7 +50,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/matching" element={<MatchingPage />} />
-        <Route path="/nakath" element={<NakathPage />} />
+        <Route path="/astrological" element={<AstrologicalPage />} />
       </Routes>
     </ConfigProvider>
   );

@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { Cosmos } from '../components/Cosmos';
 import { haptics } from '../utils/haptics';
 
-export const NakathPage = () => {
+export const AstrologicalPage = () => {
   const navigate = useNavigate();
 
   const pancanga = [
@@ -40,7 +40,7 @@ export const NakathPage = () => {
           >
             <FontAwesomeIcon icon={faChevronLeft} /> Return to Dashboard
           </button>
-          <h1 className="font-cinzel-dec text-4xl md:text-5xl text-gold-gradient mb-4">Nakath Calendar</h1>
+          <h1 className="font-cinzel-dec text-4xl md:text-5xl text-gold-gradient mb-4">Astrological Calendar</h1>
           <p className="font-poppins text-[var(--text-dim)] opacity-60 italic max-w-2xl mx-auto">Master the elements of time. Align your actions with the pulse of the universe.</p>
         </motion.div>
 

@@ -6,17 +6,17 @@ import { ServiceShortcut } from '../components/ServiceShortcut';
 import { Cosmos } from '../components/Cosmos';
 import { HoroscopeChart } from '../components/HoroscopeChart';
 import { Chatbot } from '../components/Chatbot';
-import { faCalendarAlt, faHeartPulse, faStar, faInfinity, faCompass, faChartLine, faBell, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarAlt, faHeartPulse, faCrown, faInfinity, faBell, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 export const Dashboard = () => {
   const navigate = useNavigate();
 
   const user = {
-    name: localStorage.getItem('nakath_user_name') || "Deshan Ranasinghe",
+    name: localStorage.getItem('astrological_user_name') || "Deshan Ranasinghe",
     email: "deshan@example.com",
-    tier: localStorage.getItem('nakath_user_tier') || "Nakath Plus",
-    birthData: `${localStorage.getItem('nakath_user_dob') || '24 May 1998'} · ${localStorage.getItem('nakath_user_tob') || '10:45 AM'}`,
-    location: localStorage.getItem('nakath_user_place') || "Colombo, Sri Lanka",
+    tier: localStorage.getItem('astrological_user_tier') || "Astrological Plus",
+    birthData: `${localStorage.getItem('astrological_user_dob') || '24 May 1998'} · ${localStorage.getItem('astrological_user_tob') || '10:45 AM'}`,
+    location: localStorage.getItem('astrological_user_place') || "Colombo, Sri Lanka",
     risingSign: "Leo",
     nakshatra: "Pushya"
   };
@@ -30,25 +30,24 @@ export const Dashboard = () => {
     <div className="relative min-h-screen bg-[var(--midnight)] text-[var(--cream)] overflow-x-hidden font-poppins pb-20">
       <Cosmos />
 
-      {/* Side Nav (Simple) */}
-      <div className="fixed left-0 top-0 bottom-0 w-20 bg-[var(--midnight)]/80 backdrop-blur-md border-r border-[var(--gold)]/10 z-[100] flex flex-col items-center py-10 gap-8">
-        <div className="text-[var(--gold)] text-2xl font-cinzel-dec cursor-pointer" onClick={() => navigate('/')}>✿</div>
-        <div className="flex flex-col gap-6 mt-10">
-          {[faCompass, faChartLine, faCalendarAlt, faBell].map((icon, i) => (
-            <div key={i} className="w-12 h-12 rounded-xl flex items-center justify-center cursor-pointer transition-all hover:bg-[var(--gold)]/10 hover:text-[var(--gold)] text-[var(--cream-dim)]">
-              <FontAwesomeIcon icon={icon} className="text-xl" />
-            </div>
-          ))}
+      {/* Top Nav Bar */}
+      <div className="fixed top-0 left-0 right-0 h-14 bg-[var(--midnight)]/90 backdrop-blur-md border-b border-[var(--gold)]/10 z-[100] flex items-center justify-between px-6">
+        <div className="cursor-pointer transition-transform hover:scale-105 active:scale-95 flex items-center gap-3" onClick={() => navigate('/')}>
+          <img src="/logo.png" className="w-8 h-8 object-contain" alt="Astrological Logo" />
+          <span className="font-cinzel text-xs text-[var(--gold)] tracking-widest hidden sm:block">ASTROLOGICAL</span>
         </div>
-        <div 
-          onClick={() => navigate('/')}
-          className="mt-auto w-12 h-12 rounded-xl flex items-center justify-center cursor-pointer text-crimson-l hover:bg-crimson/10"
-        >
-          <FontAwesomeIcon icon={faSignOutAlt} className="text-xl" />
+        <div className="flex items-center gap-4">
+          <div
+            onClick={() => navigate('/')}
+            className="flex items-center gap-2 text-xs font-cinzel text-[var(--cream-dim)] hover:text-[var(--crimson-l)] cursor-pointer transition-colors"
+          >
+            <FontAwesomeIcon icon={faSignOutAlt} className="text-sm" />
+            <span className="hidden sm:block">Sign Out</span>
+          </div>
         </div>
       </div>
 
-      <div className="pl-28 pr-6 md:pr-14 py-10 relative z-10">
+      <div className="px-4 sm:px-8 md:px-14 pt-20 pb-10 relative z-10">
         <header className="flex justify-between items-center mb-12">
           <div>
             <h1 className="font-cinzel text-2xl text-[var(--gold)] tracking-wider">Celestial Dashboard</h1>
@@ -75,7 +74,7 @@ export const Dashboard = () => {
             <Card className="bg-[var(--midnight)]/40 backdrop-blur-xl border border-[var(--gold)]/15 p-2 shadow-2xl mb-8 overflow-hidden relative">
               <div className="absolute -right-20 -top-20 w-80 h-80 bg-[var(--gold)]/5 rounded-full blur-[100px]" />
               <h2 className="font-cinzel text-lg text-[var(--cream)] mb-8 flex items-center gap-3 p-4">
-                <FontAwesomeIcon icon={faStar} className="text-[var(--gold)] text-xs" />
+                <FontAwesomeIcon icon={faCrown} className="text-[var(--gold)] text-sm" />
                 Personal Janma Patrika (Birth Chart)
               </h2>
               
@@ -117,10 +116,10 @@ export const Dashboard = () => {
                <Row gutter={[20, 20]}>
                  <Col xs={24} sm={12}>
                    <ServiceShortcut 
-                     title="Nakath Calendar" 
+                     title="Astrological Calendar" 
                      description="Auspicious timing for 10+ activities based on your birth star."
                      icon={faCalendarAlt}
-                     path="/nakath"
+                     path="/astrological"
                      color="var(--gold)"
                    />
                  </Col>
@@ -171,7 +170,7 @@ export const Dashboard = () => {
             </Card>
 
             <Card className="bg-white/5 border border-[var(--gold)]/15">
-               <h3 className="font-cinzel text-xs text-[var(--gold-dim)] uppercase tracking-widest mb-4">Upcoming Nakaths</h3>
+                <h3 className="font-cinzel text-xs text-[var(--gold-dim)] uppercase tracking-widest mb-4">Upcoming Astrological Events</h3>
                <List
                 dataSource={[
                   { title: "Grahapravesha", date: "Oct 12" },

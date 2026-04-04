@@ -18,7 +18,7 @@ const plans = [
   },
   {
     tier: "Basic",
-    name: "Nakath",
+    name: "Astrological",
     price: "LKR 490",
     period: "per month",
     featured: true,
@@ -33,7 +33,7 @@ const plans = [
   },
   {
     tier: "Premium",
-    name: "Nakath Premium",
+    name: "Astrological Premium",
     price: "LKR 2,490",
     period: "per month",
     features: ["All Plus features", "Live Sessions", "Priority Support"]
@@ -69,11 +69,11 @@ export const Register = () => {
 
   const onFinish = (values: any) => {
     haptics.success();
-    localStorage.setItem('nakath_user_name', values.name || 'Seeker');
-    localStorage.setItem('nakath_user_dob', values.dob ? values.dob.format('DD MMM YYYY') : 'Not Set');
-    localStorage.setItem('nakath_user_tob', values.tob ? values.tob.format('hh:mm A') : 'Not Set');
-    localStorage.setItem('nakath_user_place', values.birthplace || 'Not Set');
-    localStorage.setItem('nakath_user_tier', values.tier || 'Free');
+    localStorage.setItem('astrological_user_name', values.name || 'Seeker');
+    localStorage.setItem('astrological_user_dob', values.dob ? values.dob.format('DD MMM YYYY') : 'Not Set');
+    localStorage.setItem('astrological_user_tob', values.tob ? values.tob.format('hh:mm A') : 'Not Set');
+    localStorage.setItem('astrological_user_place', values.birthplace || 'Not Set');
+    localStorage.setItem('astrological_user_tier', values.tier || 'Free');
     
     console.log('Registration Success:', values);
     navigate('/dashboard');
@@ -93,10 +93,12 @@ export const Register = () => {
           <p className="font-poppins text-[var(--cream-dim)] opacity-60 italic">Your journey towards celestial alignment starts here.</p>
         </motion.div>
 
-        <div className="mb-12 max-w-2xl mx-auto">
+        <div className="mb-12 max-w-2xl mx-auto px-4">
           <Steps
             current={currentStep}
             className="custom-steps"
+            direction="horizontal"
+            size="small"
             items={[
               { title: 'Account' },
               { title: 'Celestial' },

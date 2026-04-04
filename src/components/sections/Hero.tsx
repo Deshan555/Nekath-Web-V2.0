@@ -2,42 +2,42 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 export const Hero = () => (
-  <section className="min-h-screen flex flex-col items-center justify-center text-center px-10 pt-[120px] pb-20 relative">
+  <section className="min-h-screen flex flex-col items-center justify-center text-center px-6 md:px-10 pt-[120px] pb-20 relative">
     <motion.p 
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: 0.6, duration: 1 }}
-      className="font-poppins text-lg text-[var(--gold-dim)] mb-4 tracking-[0.08em]"
+      className="font-poppins font-medium text-sm md:text-xl text-[var(--gold-dim)] mb-4 tracking-[0.15em] opacity-90"
     >
-      නකත් — ශ්‍රී ලාංකික ජ්‍යෝතිෂ්‍ය
+      ශ්‍රී ලාංකික ජ්‍යෝතිෂ්‍ය — Astrological
     </motion.p>
     
     <motion.div 
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: 0.5, duration: 1 }}
-      className="flex items-center gap-4 mb-4 text-[var(--gold-dim)] uppercase tracking-[0.45em] text-[0.68rem] font-cinzel"
+      className="flex items-center gap-3 md:gap-4 mb-4 text-[var(--gold-dim)] uppercase tracking-[0.3em] md:tracking-[0.45em] text-[0.55rem] md:text-[0.68rem] font-cinzel"
     >
-      <div className="w-10 h-[1px] bg-gradient-to-r from-transparent to-[var(--gold-dim)]" />
+      <div className="w-6 md:w-10 h-[1px] bg-gradient-to-r from-transparent to-[var(--gold-dim)]" />
       Traditional Sri Lankan Astrology
-      <div className="w-10 h-[1px] bg-gradient-to-l from-transparent to-[var(--gold-dim)]" />
+      <div className="w-6 md:w-10 h-[1px] bg-gradient-to-l from-transparent to-[var(--gold-dim)]" />
     </motion.div>
 
     <motion.h1 
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: 0.4, duration: 1.2 }}
-      className="font-cinzel-dec text-6xl md:text-9xl font-black leading-[0.95] tracking-[0.06em] text-gold-gradient relative"
+      className="font-cinzel-dec text-4xl sm:text-6xl md:text-8xl font-black leading-[1.1] md:leading-[0.95] tracking-[0.06em] text-gold-gradient relative px-2"
     >
-      NAKATH
-      <span className="absolute inset-0 text-transparent [-webkit-text-stroke:1px_rgba(201,168,76,0.15)] animate-[shimmer_6s_ease-in-out_infinite]">NAKATH</span>
+      ASTROLOGICAL
+      <span className="absolute inset-0 text-transparent [-webkit-text-stroke:1px_rgba(201,168,76,0.15)] animate-[shimmer_6s_ease-in-out_infinite] hidden sm:block">ASTROLOGICAL</span>
     </motion.h1>
 
     <motion.p 
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: 0.8, duration: 1 }}
-      className="font-cinzel text-xs md:text-base tracking-[0.38em] uppercase text-[var(--cream-dim)] mt-5"
+      className="font-cinzel text-[0.6rem] md:text-base tracking-[0.2em] md:tracking-[0.38em] uppercase text-[var(--cream-dim)] mt-5"
     >
       The Auspicious Moment &nbsp;·&nbsp; Your Stars &nbsp;·&nbsp; Your Destiny
     </motion.p>
@@ -46,7 +46,7 @@ export const Hero = () => (
       initial={{ scaleX: 0, opacity: 0 }}
       animate={{ scaleX: 1, opacity: 1 }}
       transition={{ delay: 0.9, duration: 1 }}
-      className="flex items-center gap-4 my-10 w-full max-w-[520px]"
+      className="flex items-center gap-4 my-8 md:my-10 w-full max-w-[520px]"
     >
       <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent via-[var(--gold-dim)] to-transparent" />
       <div className="w-2 h-2 bg-[var(--gold)] rotate-45 shadow-[0_0_8px_var(--gold)]" />
@@ -57,7 +57,7 @@ export const Hero = () => (
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: 1.0, duration: 1 }}
-      className="font-poppins italic text-lg md:text-2xl text-[var(--cream-dim)] max-w-2xl leading-relaxed mb-14"
+      className="font-poppins italic text-sm md:text-xl text-[var(--cream-dim)] max-w-2xl leading-relaxed mb-10 md:mb-14 px-4 opacity-80"
     >
       Personalized horoscopes, auspicious day guidance, and partner matching
       rooted in authentic Sri Lankan Jyotisha tradition —
@@ -68,13 +68,13 @@ export const Hero = () => (
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: 1.1, duration: 1 }}
-      className="flex gap-5 flex-wrap justify-center"
+      className="flex flex-col sm:flex-row gap-5 flex-wrap justify-center w-full max-w-xs sm:max-w-none px-6 sm:px-0"
     >
-      <Link to="/register" className="font-cinzel text-[0.72rem] tracking-[0.28em] uppercase text-[var(--midnight)] bg-gradient-to-br from-[var(--gold-light)] to-[var(--gold)] px-10 py-4 no-underline transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(201,168,76,0.4)] relative overflow-hidden group">
+      <Link to="/register" className="font-cinzel text-[0.72rem] tracking-[0.28em] uppercase text-[var(--midnight)] bg-gradient-to-br from-[var(--gold-light)] to-[var(--gold)] px-6 md:px-10 py-4 no-underline transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(201,168,76,0.4)] relative overflow-hidden group">
         <span className="relative z-10">Begin Your Journey</span>
         <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500" />
       </Link>
-      <a href="#features" className="font-cinzel text-[0.72rem] tracking-[0.28em] uppercase text-[var(--gold)] bg-transparent border border-[var(--gold)]/40 px-10 py-4 no-underline transition-all duration-300 hover:border-[var(--gold)] hover:bg-[var(--gold)]/5">
+      <a href="#features" className="font-cinzel text-[0.72rem] tracking-[0.28em] uppercase text-[var(--gold)] bg-transparent border border-[var(--gold)]/40 px-6 md:px-10 py-4 no-underline transition-all duration-300 hover:border-[var(--gold)] hover:bg-[var(--gold)]/5 text-center">
         Explore Features
       </a>
     </motion.div>

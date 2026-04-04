@@ -10,7 +10,7 @@ export const Login = () => {
   const navigate = useNavigate();
 
   const onFinish = (values: any) => {
-    if (values.name) localStorage.setItem('nakath_user_name', values.name);
+    if (values.name) localStorage.setItem('astrological_user_name', values.name);
     console.log('Login Success:', values);
     navigate('/dashboard');
   };

@@ -2,7 +2,7 @@ import { Card, Tag, Tooltip } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarCheck, faClock, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
-export const NakathService = () => {
+export const AstrologicalService = () => {
   const pancanga = [
     { label: "Tithi", value: "Shukla Dwadashi", color: "var(--gold)" },
     { label: "Vara", value: "Tuesday (Kuja)", color: "var(--cream)" },
@@ -22,10 +22,9 @@ export const NakathService = () => {
       <div className="absolute top-0 right-0 p-4 opacity-10">
         <FontAwesomeIcon icon={faCalendarCheck} className="text-6xl text-[var(--gold)]" />
       </div>
-      
       <h3 className="font-cinzel text-md text-[var(--gold)] mb-6 flex items-center gap-2">
         <FontAwesomeIcon icon={faCalendarCheck} className="text-xs" />
-        Nakath Calendar (Pancanga)
+        Astrological Calendar (Pancanga)
       </h3>
 
       <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-8">
