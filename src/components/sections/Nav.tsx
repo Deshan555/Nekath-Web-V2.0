@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import systemLogo from '../../assets/system.svg';
 
 export const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +18,8 @@ export const Nav = () => {
       transition={{ delay: 0.2, duration: 0.8 }}
       className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-6 md:px-14 py-5 bg-gradient-to-b from-[#060412]/95 to-transparent backdrop-blur-sm"
     >
-      <Link to="/" className="font-cinzel-dec text-lg md:text-2xl font-bold text-[var(--gold)] tracking-[0.12em] flex items-center gap-3 md:gap-4 no-underline transition-transform hover:scale-105 z-[110]">
+      <Link to="/" className="font-cinzel-dec text-lg md:text-2xl font-bold text-[var(--gold)] tracking-[0.12em] flex items-center gap-[3px] no-underline transition-transform hover:scale-105 z-[110]">
+        <img src={systemLogo} alt="System Logo" className="w-10 h-10 md:w-12 md:h-12 object-contain" />
         ASTROLOGICAL
       </Link>
 

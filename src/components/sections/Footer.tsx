@@ -1,6 +1,9 @@
+import systemLogo from '../../assets/system.svg';
+
 export const Footer = () => (
   <footer className="border-t border-[var(--gold)]/10 px-6 md:px-14 py-16 flex flex-col md:flex-row items-center justify-between gap-6 mt-16 text-center md:text-left">
-    <div className="font-cinzel-dec text-xl text-[var(--gold)] tracking-[0.1em] flex items-center gap-2">
+    <div className="font-cinzel-dec text-lg text-[var(--gold)] tracking-[0.1em] flex items-center gap-[3px]">
+      <img src={systemLogo} alt="System Logo" className="w-6 h-6 object-contain" />
       ASTROLOGICAL
     </div>
     <p className="font-poppins text-sm text-[var(--cream-dim)]/40 italic">© 2026 Astrological Platform · Rooted in tradition, built for today</p>
