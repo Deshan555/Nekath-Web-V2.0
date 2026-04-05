@@ -1,4 +1,4 @@
-import { Card, Row, Col, Progress, Badge, Divider, List } from 'antd';
+import { Card, Row, Col, Progress, Badge, Divider, List, Popover } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate } from 'react-router-dom';
 import { ThemeToggle } from '../components/ThemeToggle';
@@ -26,28 +26,17 @@ export const Dashboard = () => {
     { time: "Evening", text: "Focus on inner peace. Avoid major financial commitments." }
   ];
 
+  const dummyNotifications = [
+    { title: "New Match Found", description: "You have a 95% compatibility match!", time: "10m ago" },
+    { title: "Daily Horoscope", description: "Your daily reading is ready.", time: "1h ago" },
+    { title: "Transit Alert", description: "Saturn is moving to your 5th house.", time: "3h ago" }
+  ];
+
   return (
     <div className="relative min-h-screen bg-[var(--midnight)] text-[var(--cream)] overflow-x-hidden font-poppins pb-20">
       <Cosmos />
 
-      {/* Top Nav Bar */}
-      <div className="fixed top-0 left-0 right-0 h-14 bg-[var(--midnight)]/90 backdrop-blur-md border-b border-[var(--gold)]/10 z-[100] flex items-center justify-between px-6">
-        <div className="cursor-pointer transition-transform hover:scale-105 active:scale-95 flex items-center gap-3" onClick={() => navigate('/')}>
-          <img src="/logo.png" className="w-8 h-8 object-contain" alt="Astrological Logo" />
-          <span className="font-cinzel text-xs text-[var(--gold)] tracking-widest hidden sm:block">ASTROLOGICAL</span>
-        </div>
-        <div className="flex items-center gap-4">
-          <div
-            onClick={() => navigate('/')}
-            className="flex items-center gap-2 text-xs font-cinzel text-[var(--cream-dim)] hover:text-[var(--crimson-l)] cursor-pointer transition-colors"
-          >
-            <FontAwesomeIcon icon={faSignOutAlt} className="text-sm" />
-            <span className="hidden sm:block">Sign Out</span>
-          </div>
-        </div>
-      </div>
-
-      <div className="px-4 sm:px-8 md:px-14 pt-20 pb-10 relative z-10">
+      <div className="px-4 sm:px-8 md:px-14 pt-10 pb-10 relative z-10">
         <header className="flex justify-between items-center mb-12">
           <div>
             <h1 className="font-cinzel text-2xl text-[var(--gold)] tracking-wider">Celestial Dashboard</h1>
@@ -55,12 +44,42 @@ export const Dashboard = () => {
           </div>
           <div className="flex items-center gap-4">
              <ThemeToggle />
-             <Badge count={3} offset={[-2, 6]} color="var(--gold)">
-                <div className="w-10 h-10 rounded-full bg-white/5 border border-[var(--gold)]/20 flex items-center justify-center text-[var(--gold)]">
-                    <FontAwesomeIcon icon={faBell} />
-                </div>
-             </Badge>
-            <div className="flex items-center gap-3 bg-white/5 border border-[var(--gold)]/20 pl-4 pr-1 py-1 rounded-full">
+             
+             <Popover
+                placement="bottomRight"
+                title={<span className="font-cinzel text-sm text-[var(--gold)] mb-2 block border-b border-[var(--gold)]/10 pb-2">Notifications</span>}
+                content={
+                  <List
+                    size="small"
+                    className="w-64 max-h-80 overflow-y-auto"
+                    dataSource={dummyNotifications}
+                    renderItem={item => (
+                      <List.Item className="border-b border-[var(--gold)]/10 hover:bg-white/5 cursor-pointer transition-colors px-3 py-2 flex flex-col items-start gap-1 last:border-0 block w-full">
+                         <div className="text-sm font-semibold text-[var(--cream)]">{item.title}</div>
+                         <div className="text-xs text-[var(--cream-dim)]/80 mt-0.5">{item.description}</div>
+                         <div className="text-[0.65rem] text-[var(--gold-dim)] mt-1">{item.time}</div>
+                      </List.Item>
+                    )}
+                  />
+                }
+                trigger="click"
+             >
+               <Badge count={3} offset={[-2, 6]} color="var(--gold)">
+                  <div className="w-10 h-10 rounded-full bg-white/5 border border-[var(--gold)]/20 flex items-center justify-center text-[var(--gold)] cursor-pointer hover:bg-white/10 transition-colors">
+                      <FontAwesomeIcon icon={faBell} />
+                  </div>
+               </Badge>
+             </Popover>
+
+             <div
+               onClick={() => navigate('/')}
+               className="w-10 h-10 rounded-full bg-white/5 border border-[var(--gold)]/20 flex items-center justify-center text-[var(--gold)] opacity-70 hover:opacity-100 cursor-pointer hover:bg-white/10 transition-colors"
+               title="Sign Out"
+             >
+                <FontAwesomeIcon icon={faSignOutAlt} />
+             </div>
+
+            <div className="flex items-center gap-3 bg-white/5 border border-[var(--gold)]/20 pl-4 pr-1 py-1 rounded-full hidden md:flex">
               <span className="text-xs font-cinzel text-[var(--gold-dim)] uppercase tracking-widest">{user.tier}</span>
               <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[var(--gold)] to-[var(--gold-dim)] flex items-center justify-center text-[var(--midnight)] font-bold text-xs uppercase">
                 {user.name.substring(0,2)}
