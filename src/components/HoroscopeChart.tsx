@@ -1,4 +1,5 @@
 import React from 'react';
+import systemLogo from '../assets/system.svg';
 
 interface HoroscopeChartProps {
   planets?: { [key: number]: string[] };
@@ -62,9 +63,9 @@ export const HoroscopeChart: React.FC<HoroscopeChartProps> = ({
       
       {/* Center Decorative Element */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-24 h-24 border border-[var(--gold)]/20 rotate-45 flex items-center justify-center">
-            <div className="w-16 h-16 -rotate-45 flex items-center justify-center opacity-40">
-                <img src="/logo.png" className="w-12 h-12 object-contain" alt="Astrological Logo" />
+        <div className="w-24 h-24 border border-[var(--gold)]/20 rotate-45 flex items-center justify-center shadow-inner">
+            <div className="w-16 h-16 -rotate-45 flex items-center justify-center opacity-70">
+                <img src={systemLogo} className="w-14 h-14 object-contain" alt="System Logo" />
             </div>
         </div>
       </div>
